@@ -1,0 +1,58 @@
+.head-label, .label {
+    -fx-text-fill: #fff; /* Set label text color to white */
+}
+
+.gradient{
+    -fx-background-color: linear-gradient(to bottom right, #0f6789, #286155);
+}
+
+.white-form{
+    -fx-background-color: #fff;
+}
+
+.head-label {
+    -fx-border-color: #286155;
+    -fx-border-width: 0 0 0 3px;
+    -fx-padding: 0 0 0 5px;
+    -fx-text-fill: #399a8f; /* Set text color to black */
+}
+
+
+.login-btn{
+    -fx-background-color: linear-gradient(to bottom right, #098c53, #246861);
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+    -fx-text-fill: #fff;
+    -fx-font-size: 14px;
+}
+
+.login-btn:hover{
+    -fx-background-color: linear-gradient(to bottom right, #0fb565, #399a8f);
+}
+
+.textfield{
+    
+    -fx-background-color: transparent;
+    -fx-border-color: linear-gradient(to bottom right, #0f6789, #286155);
+    -fx-border-width: .5px;
+    
+}
+
+.textfield:focused {
+    -fx-border-width: 1px;
+    -fx-border-color: linear-gradient(to bottom right, #0f6789, #286155); /* Add this line to set the border color */
+}
+
+.create-btn {
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+    -fx-text-fill: #fff;
+    -fx-border-width: 1px;
+    -fx-border-color: #fff; /* Set the border color to white */
+}
+
+.create-btn:hover {
+    -fx-background-color: #fff; /* Set background color to white on hover */
+    -fx-text-fill: #000; /* Set text color to black on hover */
+    -fx-border-color: #fff; /* Set the border color to white on hover */
+}
