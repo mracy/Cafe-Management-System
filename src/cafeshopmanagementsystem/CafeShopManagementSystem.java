@@ -15,6 +15,10 @@ public class CafeShopManagementSystem extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
         
         Scene scene = new Scene(root);
+
+        stage.setTitle("Cafe Shop Management System");
+        stage.setMinHeight(450);
+        stage.setMinWidth(650);
         
         stage.setScene(scene);
         stage.show();

@@ -10,5 +10,6 @@
     <orderEntry type="library" name="JavaFX-17" level="application" />
     <orderEntry type="library" name="fontawesomefx-8.21" level="project" />
     <orderEntry type="library" name="fontawesomefx-8.2" level="project" />
+    <orderEntry type="library" name="ojdbc14-9.2.0.1" level="project" />
   </component>
 </module>

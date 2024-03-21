@@ -1,8 +1,15 @@
 package cafeshopmanagementsystem;
 
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.animation.TranslateTransition;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -42,7 +49,7 @@ public class FXMLDocumentController implements Initializable {
     private PasswordField su_password;
 
     @FXML
-    private ComboBox<?> su_question;
+    private ComboBox<String> su_question; // Changed ComboBox<?> to ComboBox<String>
 
     @FXML
     private Button su_signupBtn;
@@ -56,6 +63,25 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Button side_alreadyHave;
 
+    private Connection connect;
+    private PreparedStatement prepare;
+    private ResultSet result;
+
+    private String[] questionList = {"What is your favorite Color?", "What is your favorite food?", "What is your birth date?"};
+
+    public void regLquestionList() {
+        List<String> listQ = new ArrayList<>();
+
+        for (String data : questionList) {
+            listQ.add(data); // Fixed variable name from 'data' to 'question'
+        }
+
+        ObservableList<String> listData = FXCollections.observableArrayList(listQ); // Corrected FXCollection to FXCollections
+        su_question.setItems(listData); // Set items to ComboBox
+
+    }
+
+    @FXML
     public void switchForm(ActionEvent event) {
 
         TranslateTransition slider = new TranslateTransition();
@@ -70,12 +96,13 @@ public class FXMLDocumentController implements Initializable {
                 side_alreadyHave.setVisible(true);
                 side_CreateBtn.setVisible(false);
 
+                regLquestionList();
             });
 
             slider.play();
 
         } else if (event.getSource() == side_alreadyHave) {
-            
+
             slider.setNode(side_form);
             slider.setToX(0);
             slider.setDuration(Duration.seconds(.5));
@@ -83,18 +110,14 @@ public class FXMLDocumentController implements Initializable {
             slider.setOnFinished((ActionEvent e) -> {
                 side_alreadyHave.setVisible(false);
                 side_CreateBtn.setVisible(true);
-
             });
 
             slider.play();
-
         }
-
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
-
 }
