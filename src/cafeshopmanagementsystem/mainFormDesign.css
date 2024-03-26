@@ -47,3 +47,7 @@
 .radius{
     -fx-background-radius: 8px;
 }
+
+.transparent{
+    -fx-background-color: transparent;
+}
