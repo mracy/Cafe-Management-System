@@ -13,9 +13,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -106,6 +110,7 @@ public class FXMLDocumentController implements Initializable {
 
     private Alert alert;
 
+
     public void loginBtn() {
         if (si_username.getText().isEmpty() || si_password.getText().isEmpty()) {
             showAlert(Alert.AlertType.ERROR, "Error", "Incomplete Information", "Please enter both username and password.");
@@ -121,8 +126,31 @@ public class FXMLDocumentController implements Initializable {
 
                 result = prepare.executeQuery();
 
+                //IF SUCCESSFULLY LOGIN, THEN PROCEED TO ANOTHER FORM WHICH IS OUR MAIN FORM
+
                 if (result.next()) {
+
+                    //TO GET THE USERNAME THAT USER USED
+
+                    data.username = si_username.getText();
+
                     showAlert(Alert.AlertType.INFORMATION, "Success", "Login Successful", "Welcome, " + si_username.getText() + "!");
+
+                    //LINK YOUR <MAIN FORM>
+                    Parent root = FXMLLoader.load(getClass().getResource("mainForm.fxml"));
+
+                    Stage stage = new Stage();
+                    Scene scene = new Scene(root);
+
+                    stage.setTitle("Cafe Shop Management System");
+                    stage.setMinHeight(600);
+                    stage.setMinWidth(1100);
+
+                    stage.setScene(scene);
+                    stage.show();
+
+                    si_loginBtn.getScene().getWindow().hide();
+
                 } else {
                     showAlert(Alert.AlertType.ERROR, "Error", "Login Failed", "Incorrect username or password. Please try again.");
                 }
